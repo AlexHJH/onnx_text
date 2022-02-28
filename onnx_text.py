@@ -1,4 +1,3 @@
-from tkinter.messagebox import NO
 from typing import OrderedDict
 import onnx
 import re
