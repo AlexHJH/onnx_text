@@ -178,7 +178,7 @@ if __name__ == '__main__':
 
     onnx_model_txt, graph_init_dict = onnx_model_textual(onnx_model)
 
-    with open("deploy.onnxtxt", 'w') as fp:
+    with open("deploy.onnx.txt", 'w') as fp:
         fp.write(onnx_model_txt)
         fp.close()
     
