@@ -1,0 +1,1133 @@
+
+<
+    ir_version: 7,
+    opset_import: ["": 11]
+>
+
+torch_jit_export (float[1, 1, 800, 800] input) => (float[1, 1, 200, 200] n965, float[1, 2, 200, 200] n968, float[1, 2, 200, 200] n971)
+<
+
+>
+{
+    n972 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [2, 2]
+        >(input, n973, n974)
+
+    n441 = Constant<
+        value = float = {3.}
+        >()
+
+    n442 = Add(n972, n441)
+
+    n443 = Relu(n442)
+
+    n448 = Clip(n443, n1176, n1177)
+
+    n449 = Mul(n972, n448)
+
+    n452 = Div(n449, n1178)
+
+    n975 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n452, n976, n977)
+
+    n455 = Relu(n975)
+
+    n978 = Conv<
+        dilations = [1, 1],
+        group = 16,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n455, n979, n980)
+
+    n458 = Relu(n978)
+
+    n981 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n458, n982, n983)
+
+    n461 = Add(n981, n452)
+
+    n984 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n461, n985, n986)
+
+    n464 = Relu(n984)
+
+    n987 = Conv<
+        dilations = [1, 1],
+        group = 64,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [2, 2]
+        >(n464, n988, n989)
+
+    n467 = Relu(n987)
+
+    n990 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n467, n991, n992)
+
+    n993 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n990, n994, n995)
+
+    n472 = Relu(n993)
+
+    n996 = Conv<
+        dilations = [1, 1],
+        group = 72,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n472, n997, n998)
+
+    n475 = Relu(n996)
+
+    n999 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n475, n1000, n1001)
+
+    n478 = Add(n999, n990)
+
+    n1002 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n478, n1003, n1004)
+
+    n481 = Relu(n1002)
+
+    n1005 = Conv<
+        dilations = [1, 1],
+        group = 72,
+        kernel_shape = [5, 5],
+        pads = [2, 2, 2, 2],
+        strides = [2, 2]
+        >(n481, n1006, n1007)
+
+    n484 = Relu(n1005)
+
+    n1008 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n484, n1009, n1010)
+
+    n487 = GlobalAveragePool(n1008)
+
+    n1011 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n487, n1012, n1013)
+
+    n490 = Relu(n1011)
+
+    n1014 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n490, n1015, n1016)
+
+    n493 = Constant<
+        value = float = {3.}
+        >()
+
+    n494 = Add(n1014, n493)
+
+    n495 = Relu(n494)
+
+    n500 = Clip(n495, n1179, n1180)
+
+    n503 = Div(n500, n1181)
+
+    n504 = Mul(n1008, n503)
+
+    n1017 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n504, n1018, n1019)
+
+    n507 = Relu(n1017)
+
+    n1020 = Conv<
+        dilations = [1, 1],
+        group = 120,
+        kernel_shape = [5, 5],
+        pads = [2, 2, 2, 2],
+        strides = [1, 1]
+        >(n507, n1021, n1022)
+
+    n510 = Relu(n1020)
+
+    n1023 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n510, n1024, n1025)
+
+    n513 = GlobalAveragePool(n1023)
+
+    n1026 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n513, n1027, n1028)
+
+    n516 = Relu(n1026)
+
+    n1029 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n516, n1030, n1031)
+
+    n519 = Constant<
+        value = float = {3.}
+        >()
+
+    n520 = Add(n1029, n519)
+
+    n521 = Relu(n520)
+
+    n526 = Clip(n521, n1182, n1183)
+
+    n529 = Div(n526, n1184)
+
+    n530 = Mul(n1023, n529)
+
+    n531 = Add(n530, n504)
+
+    n1032 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n531, n1033, n1034)
+
+    n534 = Relu(n1032)
+
+    n1035 = Conv<
+        dilations = [1, 1],
+        group = 120,
+        kernel_shape = [5, 5],
+        pads = [2, 2, 2, 2],
+        strides = [1, 1]
+        >(n534, n1036, n1037)
+
+    n537 = Relu(n1035)
+
+    n1038 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n537, n1039, n1040)
+
+    n540 = GlobalAveragePool(n1038)
+
+    n1041 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n540, n1042, n1043)
+
+    n543 = Relu(n1041)
+
+    n1044 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n543, n1045, n1046)
+
+    n546 = Constant<
+        value = float = {3.}
+        >()
+
+    n547 = Add(n1044, n546)
+
+    n548 = Relu(n547)
+
+    n553 = Clip(n548, n1185, n1186)
+
+    n556 = Div(n553, n1187)
+
+    n557 = Mul(n1038, n556)
+
+    n558 = Add(n557, n531)
+
+    n1047 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n558, n1048, n1049)
+
+    n561 = Constant<
+        value = float = {3.}
+        >()
+
+    n562 = Add(n1047, n561)
+
+    n563 = Relu(n562)
+
+    n568 = Clip(n563, n1188, n1189)
+
+    n569 = Mul(n1047, n568)
+
+    n572 = Div(n569, n1190)
+
+    n1050 = Conv<
+        dilations = [1, 1],
+        group = 240,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [2, 2]
+        >(n572, n1051, n1052)
+
+    n575 = Constant<
+        value = float = {3.}
+        >()
+
+    n576 = Add(n1050, n575)
+
+    n577 = Relu(n576)
+
+    n582 = Clip(n577, n1191, n1192)
+
+    n583 = Mul(n1050, n582)
+
+    n586 = Div(n583, n1193)
+
+    n1053 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n586, n1054, n1055)
+
+    n1056 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n1053, n1057, n1058)
+
+    n591 = Constant<
+        value = float = {3.}
+        >()
+
+    n592 = Add(n1056, n591)
+
+    n593 = Relu(n592)
+
+    n598 = Clip(n593, n1194, n1195)
+
+    n599 = Mul(n1056, n598)
+
+    n602 = Div(n599, n1196)
+
+    n1059 = Conv<
+        dilations = [1, 1],
+        group = 200,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n602, n1060, n1061)
+
+    n605 = Constant<
+        value = float = {3.}
+        >()
+
+    n606 = Add(n1059, n605)
+
+    n607 = Relu(n606)
+
+    n612 = Clip(n607, n1197, n1198)
+
+    n613 = Mul(n1059, n612)
+
+    n616 = Div(n613, n1199)
+
+    n1062 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n616, n1063, n1064)
+
+    n619 = Add(n1062, n1053)
+
+    n1065 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n619, n1066, n1067)
+
+    n622 = Constant<
+        value = float = {3.}
+        >()
+
+    n623 = Add(n1065, n622)
+
+    n624 = Relu(n623)
+
+    n629 = Clip(n624, n1200, n1201)
+
+    n630 = Mul(n1065, n629)
+
+    n633 = Div(n630, n1202)
+
+    n1068 = Conv<
+        dilations = [1, 1],
+        group = 184,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n633, n1069, n1070)
+
+    n636 = Constant<
+        value = float = {3.}
+        >()
+
+    n637 = Add(n1068, n636)
+
+    n638 = Relu(n637)
+
+    n643 = Clip(n638, n1203, n1204)
+
+    n644 = Mul(n1068, n643)
+
+    n647 = Div(n644, n1205)
+
+    n1071 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n647, n1072, n1073)
+
+    n650 = Add(n1071, n619)
+
+    n1074 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n650, n1075, n1076)
+
+    n653 = Constant<
+        value = float = {3.}
+        >()
+
+    n654 = Add(n1074, n653)
+
+    n655 = Relu(n654)
+
+    n660 = Clip(n655, n1206, n1207)
+
+    n661 = Mul(n1074, n660)
+
+    n664 = Div(n661, n1208)
+
+    n1077 = Conv<
+        dilations = [1, 1],
+        group = 184,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n664, n1078, n1079)
+
+    n667 = Constant<
+        value = float = {3.}
+        >()
+
+    n668 = Add(n1077, n667)
+
+    n669 = Relu(n668)
+
+    n674 = Clip(n669, n1209, n1210)
+
+    n675 = Mul(n1077, n674)
+
+    n678 = Div(n675, n1211)
+
+    n1080 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n678, n1081, n1082)
+
+    n681 = Add(n1080, n650)
+
+    n1083 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n681, n1084, n1085)
+
+    n684 = Constant<
+        value = float = {3.}
+        >()
+
+    n685 = Add(n1083, n684)
+
+    n686 = Relu(n685)
+
+    n691 = Clip(n686, n1212, n1213)
+
+    n692 = Mul(n1083, n691)
+
+    n695 = Div(n692, n1214)
+
+    n1086 = Conv<
+        dilations = [1, 1],
+        group = 480,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n695, n1087, n1088)
+
+    n698 = Constant<
+        value = float = {3.}
+        >()
+
+    n699 = Add(n1086, n698)
+
+    n700 = Relu(n699)
+
+    n705 = Clip(n700, n1215, n1216)
+
+    n706 = Mul(n1086, n705)
+
+    n709 = Div(n706, n1217)
+
+    n1089 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n709, n1090, n1091)
+
+    n712 = GlobalAveragePool(n1089)
+
+    n1092 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n712, n1093, n1094)
+
+    n715 = Relu(n1092)
+
+    n1095 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n715, n1096, n1097)
+
+    n718 = Constant<
+        value = float = {3.}
+        >()
+
+    n719 = Add(n1095, n718)
+
+    n720 = Relu(n719)
+
+    n725 = Clip(n720, n1218, n1219)
+
+    n728 = Div(n725, n1220)
+
+    n729 = Mul(n1089, n728)
+
+    n1098 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n681, n1099, n1100)
+
+    n732 = Add(n729, n1098)
+
+    n1101 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n732, n1102, n1103)
+
+    n735 = Constant<
+        value = float = {3.}
+        >()
+
+    n736 = Add(n1101, n735)
+
+    n737 = Relu(n736)
+
+    n742 = Clip(n737, n1221, n1222)
+
+    n743 = Mul(n1101, n742)
+
+    n746 = Div(n743, n1223)
+
+    n1104 = Conv<
+        dilations = [1, 1],
+        group = 672,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n746, n1105, n1106)
+
+    n749 = Constant<
+        value = float = {3.}
+        >()
+
+    n750 = Add(n1104, n749)
+
+    n751 = Relu(n750)
+
+    n756 = Clip(n751, n1224, n1225)
+
+    n757 = Mul(n1104, n756)
+
+    n760 = Div(n757, n1226)
+
+    n1107 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n760, n1108, n1109)
+
+    n763 = GlobalAveragePool(n1107)
+
+    n1110 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n763, n1111, n1112)
+
+    n766 = Relu(n1110)
+
+    n1113 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n766, n1114, n1115)
+
+    n769 = Constant<
+        value = float = {3.}
+        >()
+
+    n770 = Add(n1113, n769)
+
+    n771 = Relu(n770)
+
+    n776 = Clip(n771, n1227, n1228)
+
+    n779 = Div(n776, n1229)
+
+    n780 = Mul(n1107, n779)
+
+    n781 = Add(n780, n732)
+
+    n1116 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n781, n1117, n1118)
+
+    n784 = Constant<
+        value = float = {3.}
+        >()
+
+    n785 = Add(n1116, n784)
+
+    n786 = Relu(n785)
+
+    n791 = Clip(n786, n1230, n1231)
+
+    n792 = Mul(n1116, n791)
+
+    n795 = Div(n792, n1232)
+
+    n1119 = Conv<
+        dilations = [1, 1],
+        group = 672,
+        kernel_shape = [5, 5],
+        pads = [2, 2, 2, 2],
+        strides = [1, 1]
+        >(n795, n1120, n1121)
+
+    n798 = Constant<
+        value = float = {3.}
+        >()
+
+    n799 = Add(n1119, n798)
+
+    n800 = Relu(n799)
+
+    n805 = Clip(n800, n1233, n1234)
+
+    n806 = Mul(n1119, n805)
+
+    n809 = Div(n806, n1235)
+
+    n1122 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n809, n1123, n1124)
+
+    n812 = GlobalAveragePool(n1122)
+
+    n1125 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n812, n1126, n1127)
+
+    n815 = Relu(n1125)
+
+    n1128 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n815, n1129, n1130)
+
+    n818 = Constant<
+        value = float = {3.}
+        >()
+
+    n819 = Add(n1128, n818)
+
+    n820 = Relu(n819)
+
+    n825 = Clip(n820, n1236, n1237)
+
+    n828 = Div(n825, n1238)
+
+    n829 = Mul(n1122, n828)
+
+    n1131 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n781, n1132, n1133)
+
+    n832 = Add(n829, n1131)
+
+    n1134 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n832, n1135, n1136)
+
+    n835 = Constant<
+        value = float = {3.}
+        >()
+
+    n836 = Add(n1134, n835)
+
+    n837 = Relu(n836)
+
+    n842 = Clip(n837, n1239, n1240)
+
+    n843 = Mul(n1134, n842)
+
+    n846 = Div(n843, n1241)
+
+    n1137 = Conv<
+        dilations = [1, 1],
+        group = 672,
+        kernel_shape = [5, 5],
+        pads = [2, 2, 2, 2],
+        strides = [2, 2]
+        >(n846, n1138, n1139)
+
+    n849 = Constant<
+        value = float = {3.}
+        >()
+
+    n850 = Add(n1137, n849)
+
+    n851 = Relu(n850)
+
+    n856 = Clip(n851, n1242, n1243)
+
+    n857 = Mul(n1137, n856)
+
+    n860 = Div(n857, n1244)
+
+    n1140 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n860, n1141, n1142)
+
+    n863 = GlobalAveragePool(n1140)
+
+    n1143 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n863, n1144, n1145)
+
+    n866 = Relu(n1143)
+
+    n1146 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n866, n1147, n1148)
+
+    n869 = Constant<
+        value = float = {3.}
+        >()
+
+    n870 = Add(n1146, n869)
+
+    n871 = Relu(n870)
+
+    n876 = Clip(n871, n1245, n1246)
+
+    n879 = Div(n876, n1247)
+
+    n880 = Mul(n1140, n879)
+
+    n1149 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n880, n1150, n1151)
+
+    n883 = Constant<
+        value = float = {3.}
+        >()
+
+    n884 = Add(n1149, n883)
+
+    n885 = Relu(n884)
+
+    n890 = Clip(n885, n1248, n1249)
+
+    n891 = Mul(n1149, n890)
+
+    n894 = Div(n891, n1250)
+
+    n1152 = Conv<
+        dilations = [1, 1],
+        group = 960,
+        kernel_shape = [5, 5],
+        pads = [2, 2, 2, 2],
+        strides = [1, 1]
+        >(n894, n1153, n1154)
+
+    n897 = Constant<
+        value = float = {3.}
+        >()
+
+    n898 = Add(n1152, n897)
+
+    n899 = Relu(n898)
+
+    n904 = Clip(n899, n1251, n1252)
+
+    n905 = Mul(n1152, n904)
+
+    n908 = Div(n905, n1253)
+
+    n1155 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n908, n1156, n1157)
+
+    n911 = GlobalAveragePool(n1155)
+
+    n1158 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n911, n1159, n1160)
+
+    n914 = Relu(n1158)
+
+    n1161 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n914, n1162, n1163)
+
+    n917 = Constant<
+        value = float = {3.}
+        >()
+
+    n918 = Add(n1161, n917)
+
+    n919 = Relu(n918)
+
+    n924 = Clip(n919, n1254, n1255)
+
+    n927 = Div(n924, n1256)
+
+    n928 = Mul(n1155, n927)
+
+    n929 = Add(n928, n880)
+
+    n1164 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n929, n1165, n1166)
+
+    n932 = Constant<
+        value = float = {3.}
+        >()
+
+    n933 = Add(n1164, n932)
+
+    n934 = Relu(n933)
+
+    n939 = Clip(n934, n1257, n1258)
+
+    n940 = Mul(n1164, n939)
+
+    n943 = Div(n940, n1259)
+
+    n1167 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n943, n1168, n1169)
+
+    n946 = Relu(n1167)
+
+    n947 = ConvTranspose<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [4, 4],
+        pads = [1, 1, 1, 1],
+        strides = [2, 2]
+        >(n946, neck_deconv_layers_1_conv_weight)
+
+    n948 = BatchNormalization<
+        epsilon = 9.999999747378752e-06,
+        momentum = 0.8999999761581421
+        >(n947, neck_deconv_layers_1_bn_weight, neck_deconv_layers_1_bn_bias, neck_deconv_layers_1_bn_running_mean, neck_deconv_layers_1_bn_running_var)
+
+    n949 = Relu(n948)
+
+    n1170 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n949, n1171, n1172)
+
+    n952 = Relu(n1170)
+
+    n953 = ConvTranspose<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [4, 4],
+        pads = [1, 1, 1, 1],
+        strides = [2, 2]
+        >(n952, neck_deconv_layers_3_conv_weight)
+
+    n954 = BatchNormalization<
+        epsilon = 9.999999747378752e-06,
+        momentum = 0.8999999761581421
+        >(n953, neck_deconv_layers_3_bn_weight, neck_deconv_layers_3_bn_bias, neck_deconv_layers_3_bn_running_mean, neck_deconv_layers_3_bn_running_var)
+
+    n955 = Relu(n954)
+
+    n1173 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n955, n1174, n1175)
+
+    n958 = Relu(n1173)
+
+    n959 = ConvTranspose<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [4, 4],
+        pads = [1, 1, 1, 1],
+        strides = [2, 2]
+        >(n958, neck_deconv_layers_5_conv_weight)
+
+    n960 = BatchNormalization<
+        epsilon = 9.999999747378752e-06,
+        momentum = 0.8999999761581421
+        >(n959, neck_deconv_layers_5_bn_weight, neck_deconv_layers_5_bn_bias, neck_deconv_layers_5_bn_running_mean, neck_deconv_layers_5_bn_running_var)
+
+    n961 = Relu(n960)
+
+    n962 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n961, bbox_head_heatmap_head_0_weight, bbox_head_heatmap_head_0_bias)
+
+    n963 = Relu(n962)
+
+    n964 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n963, bbox_head_heatmap_head_2_weight, bbox_head_heatmap_head_2_bias)
+
+    n965 = Sigmoid(n964)
+
+    n966 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n961, bbox_head_wh_head_0_weight, bbox_head_wh_head_0_bias)
+
+    n967 = Relu(n966)
+
+    n968 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n967, bbox_head_wh_head_2_weight, bbox_head_wh_head_2_bias)
+
+    n969 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [3, 3],
+        pads = [1, 1, 1, 1],
+        strides = [1, 1]
+        >(n961, bbox_head_offset_head_0_weight, bbox_head_offset_head_0_bias)
+
+    n970 = Relu(n969)
+
+    n971 = Conv<
+        dilations = [1, 1],
+        group = 1,
+        kernel_shape = [1, 1],
+        pads = [0, 0, 0, 0],
+        strides = [1, 1]
+        >(n970, bbox_head_offset_head_2_weight, bbox_head_offset_head_2_bias)
+
+}
